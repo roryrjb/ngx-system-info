@@ -22,6 +22,14 @@ $ make
 $ sudo make install
 ```
 
+Compiles with at least the following versions of Nginx:
+
+* 1.6.3
+* 1.8.1
+* 1.10.3
+* 1.12.2
+* 1.14.0
+
 ### Usage
 
 Specify a `location` in your Nginx configuration to display the data,
@@ -49,4 +57,14 @@ __Example output:__
   "freeswap": 8438935552,
   "procs": 857
 }
+```
+
+### Testing
+
+There's an included Dockerfile that will build this module against various
+versions of Nginx and do a simple `curl` test against an endpoint.
+
+```
+$ docker build -t ngx-system-info .
+$ docker run --rm ngx-system-info
 ```
