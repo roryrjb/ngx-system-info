@@ -10,16 +10,21 @@ __Download Nginx source:__
 
 ```
 $ wget https://nginx.org/download/nginx-VERSION.tar.gz
-$ cat nginx-VERSION.tar.gz | gunzip | tar -x
+$ tar -xzf nginx-VERSION.tar.gz
 $ cd nginx-VERSION
 ```
 
-__Build as static module in Nginx:__
+__Build as static module:__
 
 ```
 $ ./configure --add-module=/path/to/ngx-system-info
 $ make
 $ sudo make install
+```
+
+__Build as a dynamic module:__
+
+```
 ```
 
 Compiles with at least the following versions of Nginx:
@@ -65,6 +70,6 @@ There's an included Dockerfile that will build this module against various
 versions of Nginx and do a simple `curl` test against an endpoint.
 
 ```
-$ docker build -t ngx-system-info .
-$ docker run --rm ngx-system-info
+$ make test
 ```
+
