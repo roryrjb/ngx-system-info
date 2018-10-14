@@ -6,13 +6,9 @@ RUN apt install -y build-essential curl libssl-dev libpcre3-dev
 RUN mkdir /tmp/ngx-system-info
 
 COPY . /tmp/ngx-system-info
-COPY docker-setup.bash /tmp/docker-setup.bash
-
-RUN /tmp/docker-setup.bash
-
-COPY docker-test.bash /tmp/docker-test.bash
+COPY test.sh /tmp/test.sh
 COPY nginx.conf /root/nginx.conf
+COPY nginx.dynamic.conf /root/nginx.dynamic.conf
 
 RUN mkdir /root/logs
-
-CMD ["/tmp/docker-test.bash"]
+RUN sh /tmp/test.sh
